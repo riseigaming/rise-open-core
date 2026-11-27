@@ -1,0 +1,15 @@
+# Table of contents
+
+* [Overview](README.md)
+* [Start here](getting-started.md)
+* [Installation and safety](installation.md)
+* [First operator walkthrough](first-admin.md)
+* [Architecture and product boundary](architecture.md)
+* [Customize a fork](customization.md)
+* [Internal Games](internal-games.md)
+* [External game adapters](external-games.md)
+* [Nova and wallet](nova-wallet.md)
+* [Sportsbook and hosted connections](sportsbook-chess.md)
+* [Operations and evidence](operations.md)
+* [Security and licences](security.md)
+* [Updates and fork verification](updating.md)

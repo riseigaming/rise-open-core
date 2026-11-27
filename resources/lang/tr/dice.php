@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'real' => 'Gerçek', 'real_balance' => 'Cüzdan bakiyesi', 'real_note' => 'Bu oyun seçili cüzdan bakiyenizi kullanır. Bahis ve kazançlar tur tamamlandığında kesinleşir.',
+    'demo' => 'Demo', 'credits' => 'Sanal kredi', 'balance' => 'Demo bakiyesi',
+    'max_payout' => 'En yüksek ödeme',
+    'payout_limit' => 'Olası ödeme, izin verilen en yüksek tutarı aşıyor.',
+    'dedicated_action' => 'Bu oyun için Dice zar atma işlemini kullanın.',
+    'bet_amount' => 'Bahis tutarı', 'bet' => 'Zar at', 'rolling' => 'Zar atılıyor…', 'retry' => 'Tekrar dene',
+    'decrease' => 'Bahsi azalt', 'increase' => 'Bahsi artır', 'half' => 'Bahsi yarıya indir', 'double' => 'Bahsi ikiye katla',
+    'under' => 'Altında', 'over' => 'Üzerinde', 'target' => 'Senin sayın', 'rolled' => 'Gelen sayı',
+    'multiplier' => 'Çarpan', 'payout' => 'Olası ödeme', 'chance' => 'Kazanma olasılığı',
+    'won' => 'Kazandın', 'lost' => 'Bu turda kazanamadın', 'ready' => 'Sayını seç ve zar at.',
+    'history' => 'Turlarım', 'history_empty' => 'Oynadığın turlar burada görünecek.',
+    'result' => 'Sonuç', 'return' => 'Ödeme', 'settings' => 'Oyun ayarları', 'sound' => 'Ses',
+    'animation' => 'Zar animasyonu', 'rules' => 'Altında, seçtiğin sayının altında kazanır. Üzerinde, seçtiğin sayıya eşit veya üstünde kazanır. Ödemeye bahis dahildir; ödeme gösterilen para biriminde 0,01 tutarına aşağı yuvarlanır.',
+    'demo_note' => 'Gerçek para kullanılmaz. Demo kredileri çekilemez.',
+    'rng' => 'Sunucuda kriptografik rastgelelik; bağımsız seed doğrulaması veya RNG sertifikası yoktur.',
+    'rtp' => 'Teorik geri dönüş', 'limits' => 'Bahis limitleri', 'error' => 'Tur tamamlanamadı.',
+    'invalid' => 'Bahis tutarını ve sayıyı kontrol et.', 'insufficient' => 'Yetersiz bakiye.',
+    'busy' => 'Bir tur işleniyor. Kısa süre sonra tekrar dene.',
+    'conflict' => 'Bu istek başka bir tur için zaten kullanıldı.',
+    'network' => 'Bağlantı kesildi. Yeni bahis oluşturmadan aynı turu almak için tekrar dene.',
+    'expired' => 'Bu oyun oturumu sona erdi. Yeni bir oturum için Dice’ı yeniden aç.',
+    'refresh' => 'Sonuçları yenile', 'refresh_error' => 'Sonuçlar yenilenemedi. Son sonucun korundu.',
+];

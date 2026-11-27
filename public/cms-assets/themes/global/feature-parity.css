@@ -1,0 +1,27 @@
+/* Global-only presentation for existing CMS rewards and legal information. */
+.globalEarnPage, .globalInformationPage { max-width: 1240px; margin-inline: auto; padding: clamp(18px, 3vw, 40px); }
+.globalEarnTabs, .globalInfoTabs { display:flex; flex-wrap:wrap; gap:10px; margin:24px 0; }
+.globalEarnTabs a, .globalInfoTabs a { display:inline-flex; align-items:center; padding:10px 14px; border:1px solid var(--global-border, rgba(255,255,255,.18)); border-radius:999px; color:inherit; text-decoration:none; }
+.globalEarnCards { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,295px),1fr)); gap:16px; }
+.globalEarnCard { min-width:0; display:flex; flex-direction:column; align-items:flex-start; gap:13px; scroll-margin-top:110px; }
+.globalEarnCard h2 { margin:0; font-size:clamp(19px,2vw,25px); line-height:1.25; }
+.globalEarnCard p { margin:0; flex:1; }
+.globalEarnMeta { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+.globalEarnMeta strong { border-radius:999px; padding:6px 10px; background:rgba(82,165,255,.15); color:inherit; }
+.globalEarnCard .globalPrimaryAction { cursor:pointer; min-height:42px; border:0; }
+.globalEarnCard .globalPrimaryAction:disabled { opacity:.65; cursor:default; }
+.globalInformationSections { display:grid; gap:14px; }
+.globalInfoEntry { scroll-margin-top:110px; min-width:0; }
+.globalInfoEntry summary { display:flex; align-items:center; justify-content:space-between; gap:12px; cursor:pointer; padding:3px 0; }
+.globalInfoEntry summary strong { font-size:clamp(17px,2vw,22px); }
+.globalInfoEntry[open] summary span { transform:rotate(180deg); }
+.globalInfoEntry .globalInformationContent { overflow-wrap:anywhere; margin-top:22px; }
+.globalInfoEntry .globalInformationContent a { text-decoration:underline; }
+.globalInfoEntry .globalInformationContent img { max-width:100%; height:auto; }
+.globalInfoEntry .globalInformationContent p { line-height:1.7; }
+.globalInfoEntry .globalInformationContent ul { padding-inline-start:22px; }
+@media (max-width:600px) {
+  .globalEarnPage,.globalInformationPage { padding:16px; }
+  .globalEarnTabs,.globalInfoTabs { flex-wrap:nowrap; overflow-x:auto; scroll-snap-type:x proximity; }
+  .globalEarnTabs a,.globalInfoTabs a { flex:none; scroll-snap-align:start; }
+}

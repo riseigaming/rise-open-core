@@ -1,0 +1,14 @@
+/* Shared customer placeholder typography; field text and visibility stay local. */
+:root {
+    --cms-placeholder-font-size: 12px;
+}
+
+input::placeholder,
+textarea::placeholder {
+    font-size: var(--cms-placeholder-font-size) !important;
+}
+
+/* Floating labels act as placeholders while their fields are empty. */
+.gelAuthFloatingField {
+    --gel-auth-label-rest-font-size: var(--cms-placeholder-font-size) !important;
+}

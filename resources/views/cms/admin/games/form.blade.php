@@ -1,0 +1,16 @@
+@extends('cms.admin.index')
+@section('title', __('admin_catalog.game_record'))
+@section('content')
+<div class="container-fluid py-3"><h1 class="h2 mb-3">{{ __('admin_catalog.game_record') }}</h1>
+@include('cms.admin.catalog.notice')
+
+<div class="card"><div class="card-body"><form id="game-form" method="post" enctype="multipart/form-data" action="{{ $game->exists ? route('cms.admin.games.update',$game) : route('cms.admin.games.store') }}">@csrf<div class="row">
+@foreach(['name'=>__('admin_catalog.game_name'),'slug'=>__('admin_catalog.slug'),'reference_id'=>__('admin_catalog.reference'),'description'=>__('admin_catalog.description'),'rank'=>__('admin_catalog.rank')] as $field=>$label)<div class="col-md-6 mb-3"><label class="form-label" for="{{ $field }}">{{ $label }}</label><input class="form-control" id="{{ $field }}" name="{{ $field }}" value="{{ old($field,$game->$field??($field==='rank'?0:'')) }}" @if($field==='rank') type="number" min="0" @else type="text" @endif @if(in_array($field,['name','slug'])) required @endif></div>@endforeach
+<div class="col-md-6 mb-3"><label class="form-label" for="provider_id">{{ __('admin_catalog.provider') }}</label><select class="form-select" id="provider_id" name="provider_id" required><option value="">{{ __('admin_catalog.select') }}</option>@foreach($providers as $provider)<option value="{{ $provider->id }}" @selected((string)old('provider_id',$game->provider_id)===(string)$provider->id)>{{ $provider->name }}</option>@endforeach</select></div>
+<div class="col-md-6 mb-3"><label class="form-label" for="game_type">{{ __('admin_catalog.game_type') }}</label><select class="form-select" id="game_type" name="game_type">@foreach(\App\Models\CmsGame::TYPES as $value=>$text)<option value="{{ $value }}" @selected(old('game_type',$game->game_type)===$value)>{{ $text }}</option>@endforeach</select></div>
+@foreach(['status'=>__('admin_catalog.status'),'is_restricted'=>__('admin_catalog.hidden_restriction'),'is_maintenance'=>__('admin_catalog.maintenance')] as $field=>$label)<div class="col-md-4 mb-3"><label class="form-label" for="{{ $field }}">{{ $label }}</label><select class="form-select" id="{{ $field }}" name="{{ $field }}">@foreach($field==='status'?['active'=>__('admin_catalog.active'),'passive'=>__('admin_catalog.hidden')]:['0'=>__('admin_catalog.no'),'1'=>__('admin_catalog.yes')] as $value=>$text)<option value="{{ $value }}" @selected((string)old($field,$field==='status'?$game->$field:(int)(bool)$game->$field)===(string)$value)>{{ $text }}</option>@endforeach</select></div>@endforeach
+<div class="col-md-6 mb-3"><label class="form-label" for="image">{{ __('admin_catalog.game_image') }}</label><input type="file" class="form-control" name="image" id="image" accept="image/png,image/jpeg,image/webp">@if($game->thumbnail_image)<img src="{{ $game->imageUrl() }}" alt="" class="mt-2" width="160">@endif</div></div>
+<p class="text-muted">{{ __('admin_catalog.game_visibility_help') }}</p><button class="btn btn-primary" type="submit">{{ __('admin_catalog.save') }}</button> <a class="btn btn-outline-secondary" href="{{ route('cms.admin.games.index') }}">{{ __('admin_catalog.back_to_list') }}</a></form></div></div>
+
+</div>
+@endsection

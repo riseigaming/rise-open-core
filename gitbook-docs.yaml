@@ -1,0 +1,12 @@
+$schema: https://api.gitbook.com/openapi.yaml#/components/schemas/GitSyncSiteConfig
+
+site:
+  title: Rise Docs
+  structure:
+    - type: space
+      key: rise-open-core
+      title: Rise Open Core
+      path: docs
+      default: true
+      content:
+        directory: ./docs/gitbook

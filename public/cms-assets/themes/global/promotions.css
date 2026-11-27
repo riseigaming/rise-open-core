@@ -1,0 +1,181 @@
+/* Layout and scroll motion are owned by winx-subpage-shell.css/js. */
+.promotionsPageOuter { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
+.promotionsContent > .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+.promotionsTab,
+.promotionsTab:hover {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    min-height: 36px;
+    padding: 0 13px;
+    border-radius: 12px;
+    color: rgba(244,247,255,.72);
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+}
+.promotionsTab.is-active {
+    background: linear-gradient(180deg, #1688ff 0%, #0876ee 100%);
+    color: #fff;
+    box-shadow: 0 10px 22px rgba(3,55,140,.34), inset 0 1px rgba(255,255,255,.2);
+}
+.promotionsTab:focus-visible,
+.promotionCardAction:focus-visible { outline: 2px solid #fff; outline-offset: -3px; }
+.promotionsGrid .promotionCardAction:focus-visible,
+.promotionCardTitleTrigger:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.promotionsGrid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
+.promotionCard {
+    display: grid;
+    grid-template-columns: minmax(0, .7fr) minmax(0, 1fr);
+    justify-self: center;
+    align-items: stretch;
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid rgba(125, 148, 220, 0.14);
+    border-radius: 22px;
+    background:
+        radial-gradient(circle at top right, rgba(86, 121, 255, 0.18), transparent 34%),
+        linear-gradient(180deg, rgba(12, 18, 42, 0.96) 0%, rgba(8, 13, 30, 0.99) 100%);
+}
+
+.promotionCardVisual {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    aspect-ratio: 2 / 1;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(26, 38, 89, 0.96) 0%, rgba(13, 19, 44, 0.98) 100%);
+    cursor: pointer;
+}
+.promotionCardVisual:focus-visible { outline: 2px solid #fff; outline-offset: -4px; }
+
+.promotionCardVisual img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.promotionCardBody {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    gap: 8px;
+    padding: clamp(14px, 1.5vw, 18px);
+    min-width: 0;
+}
+
+.promotionCardTitle {
+    margin: 0;
+    color: #f5f8ff;
+    font-size: clamp(22px, 2vw, 26px);
+    line-height: 1.15;
+    overflow-wrap: anywhere;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+}
+.promotionCardTitleTrigger {
+    display: inline;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    letter-spacing: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.promotionCardText {
+    margin: 0;
+    color: rgba(225, 232, 250, 0.76);
+    font-size: 13px;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+.promotionCardRemaining { font-size: 12px; line-height: 1.3; -webkit-line-clamp: 1; }
+.promotionCardBody:has(.promotionCardRemaining) > .promotionCardText:not(.promotionCardRemaining) { -webkit-line-clamp: 2; }
+
+.promotionCardFooter {
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.promotionCardAction {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #9fc0ff;
+    font-size: 13px;
+    font-weight: 800;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    text-decoration: none;
+}
+
+.promotionCardAction:hover,
+.promotionCardAction:focus-visible {
+    color: #9fc0ff;
+    text-decoration: none;
+}
+
+/* Match the site's quiet "View all" control without changing My Bonuses' login action. */
+.promotionsGrid .promotionCardAction {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 34px;
+    padding: 0 14px;
+    border: 1px solid rgba(131, 146, 181, 0.16);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #edf3ff;
+    font-size: 11px;
+    font-weight: 700;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.promotionsGrid .promotionCardAction:hover,
+.promotionsGrid .promotionCardAction:focus-visible {
+    color: #edf3ff;
+    text-decoration: none;
+}
+
+.promotionsEmptyState {
+    padding: 32px 24px;
+    border: 1px dashed rgba(129, 150, 222, 0.22);
+    border-radius: 24px;
+    background: rgba(10, 16, 38, 0.74);
+    color: rgba(229, 235, 249, 0.82);
+    text-align: center;
+}
+@media (max-width: 991px) {
+    .promotionsPageOuter .promotionCard { grid-template-columns: minmax(0, 1fr); border-radius: 20px; }
+}
+@media (max-width: 767px) {
+    .promotionsTab { padding-inline: 10px; border-radius: 11px; }
+}

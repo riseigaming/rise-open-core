@@ -1,0 +1,14 @@
+@extends('cms.global.index')
+@push('head')<link rel="stylesheet" href="{{ asset('cms-assets/themes/global/catalog.css') }}">@endpush
+@section('pageContent')
+<section class="globalSurfacePage catalogPage"><div class="container py-4">
+
+@include('cms.global.partials.journey.breadcrumb',['crumbs'=>[__('journey.catalog')=>null]])
+<h1>{{ __('journey.catalog') }}</h1><p class="journeyNotice">{{ __('journey.catalog_note') }}</p>
+<nav class="journeyFilterLinks" aria-label="{{ __('journey.categories') }}"><a class="globalChip" href="{{ route('cms.games.index') }}">{{ __('journey.all') }}</a>@foreach(array_keys(\App\Models\CmsGame::TYPES) as $type)<a class="globalChip" href="{{ route('cms.games.index',['type'=>$type]) }}" @if(request('type')===$type) aria-current="page" @endif>{{ __('journey.types.'.$type) }}</a>@endforeach</nav>
+<details class="journeyProviderLinks" id="catalog-providers" @if(request('provider')) open @endif><summary>{{ __('journey.providers') }} ({{ $providers->count() }})</summary><nav class="journeyFilterLinks" aria-label="{{ __('journey.providers') }}">@foreach($providers as $provider)<a class="globalChip" href="{{ route('cms.games.index',['provider'=>$provider->id]) }}" @if((string)request('provider')===(string)$provider->id) aria-current="page" @endif>{{ $provider->name }}</a>@endforeach</nav></details>
+<form method="get" class="catalogFilters"><input class="form-control" name="q" aria-label="{{ __('catalog.search') }}" placeholder="{{ __('catalog.search') }}" value="{{ request('q') }}"><select class="form-select" name="provider" aria-label="{{ __('catalog.all_providers') }}"><option value="">{{ __('catalog.all_providers') }}</option>@foreach($providers as $provider)<option value="{{ $provider->id }}" @selected((string)request('provider')===(string)$provider->id)>{{ $provider->name }}</option>@endforeach</select><select class="form-select" name="type" aria-label="{{ __('catalog.all_types') }}"><option value="">{{ __('catalog.all_types') }}</option>@foreach(\App\Models\CmsGame::TYPES as $type=>$text)<option value="{{ $type }}" @selected(request('type')===$type)>{{ __('journey.types.'.$type) }}</option>@endforeach</select><button class="globalPrimaryAction" type="submit">{{ __('catalog.filter') }}</button></form>
+<p class="mt-3" data-catalog-count>{{ __('journey.results',['count'=>$games->total()]) }} @if(array_filter($filters)) · <a href="{{ route('cms.games.index') }}">{{ __('journey.reset') }}</a>@endif</p>
+@if($games->count())@include('cms.global.games.cards',['games'=>$games])@else<p role="status">{{ __('catalog.empty') }}</p>@endif
+<nav class="journeyRelated"><a href="{{ route('cms.front.learnGuide','catalog-discovery') }}">{{ __('journey.guides.catalog-discovery.title') }}</a></nav><div class="mt-4">{{ $games->links() }}</div></div></section>
+@endsection

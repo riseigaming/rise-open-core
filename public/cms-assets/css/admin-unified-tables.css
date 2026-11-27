@@ -1,0 +1,145 @@
+/*
+ * Shared admin table presentation.
+ * The dashboard operations queue is the visual source of truth; data behavior,
+ * Bootstrap Table sorting, pagination and per-cell components remain untouched.
+ */
+.admin-unified-table-card {
+    background: #fff !important;
+    border: 1px solid #e5e5e5 !important;
+    border-radius: 6px !important;
+    box-shadow: none !important;
+    min-width: 0;
+}
+
+.admin-unified-table-card > .admin-unified-table-body,
+.transactions-admin-page .admin-unified-table-card > .admin-unified-table-body {
+    padding: 18px !important;
+}
+
+.admin-unified-table-title {
+    color: #171717;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.4;
+}
+
+.admin-unified-table-subtitle {
+    color: #737373 !important;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.admin-unified-table-scroll,
+.admin-unified-table-card .dashboard-queue-scroll,
+.admin-unified-table-card .fixed-table-body {
+    scrollbar-color: #c4c4c4 #f5f5f5;
+    scrollbar-width: thin;
+}
+
+.admin-unified-table {
+    border-collapse: collapse !important;
+    border-spacing: 0 !important;
+    color: #333 !important;
+    font-size: 13px !important;
+    margin: 0 !important;
+    text-align: left;
+    width: 100%;
+}
+
+.admin-unified-table > thead > tr > th,
+.transactions-admin-page .fixed-table-container .admin-unified-table > thead > tr > th {
+    background: #fafafa !important;
+    border: 0 !important;
+    border-bottom: 1px solid #e5e5e5 !important;
+    color: #737373 !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0 !important;
+    line-height: 1.45 !important;
+    padding: 9px 10px !important;
+    text-align: left;
+    text-transform: none !important;
+    vertical-align: middle !important;
+}
+
+.admin-unified-table > tbody > tr > td,
+.transactions-admin-page .fixed-table-container .admin-unified-table > tbody > tr > td {
+    background: #fff !important;
+    border: 0 !important;
+    border-bottom: 1px solid #eee !important;
+    color: #333 !important;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    padding: 12px 10px !important;
+    vertical-align: middle !important;
+}
+
+.admin-unified-table > tbody > tr:last-child > td,
+.transactions-admin-page .fixed-table-container .admin-unified-table > tbody > tr:last-child > td {
+    border-bottom: 0 !important;
+}
+
+.admin-unified-table > tbody > tr:hover > td,
+.transactions-admin-page .fixed-table-container .admin-unified-table > tbody > tr:hover > td {
+    background: #fafafa !important;
+}
+
+/* Bootstrap Table generates these wrappers at runtime. Keep them visually neutral. */
+.admin-unified-table-card--bootstrap .fixed-table-container {
+    background: #fff !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    overflow: hidden;
+}
+
+.admin-unified-table-card--bootstrap .fixed-table-header {
+    background: #fafafa !important;
+}
+
+.transactions-admin-page .admin-unified-table-card--bootstrap .fixed-table-body {
+    max-height: 420px !important;
+    min-height: 0 !important;
+}
+
+.transactions-admin-page .fixed-table-container .admin-unified-table > thead > tr > th .th-inner {
+    color: #737373 !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0 !important;
+    line-height: 1.45 !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    padding: 9px 10px !important;
+    text-overflow: clip !important;
+    text-transform: none !important;
+    white-space: normal !important;
+    word-break: normal !important;
+}
+
+/* Preserve Bootstrap Table's existing sort images and clickable header area. */
+.transactions-admin-page .fixed-table-container .admin-unified-table > thead > tr > th .th-inner.sortable {
+    background-position: right 8px center;
+    cursor: pointer;
+    padding-right: 30px !important;
+}
+
+.admin-unified-table-card--bootstrap .fixed-table-pagination {
+    color: #737373;
+    font-size: 12px;
+    padding-top: 10px;
+}
+
+@media (max-width: 1023px) {
+    .admin-unified-table-card > .admin-unified-table-body,
+    .transactions-admin-page .admin-unified-table-card > .admin-unified-table-body {
+        padding: 14px !important;
+    }
+
+    .admin-unified-table-scroll,
+    .admin-unified-table-card--bootstrap .fixed-table-body {
+        overflow-x: auto !important;
+        overscroll-behavior-x: contain;
+        -webkit-overflow-scrolling: touch;
+    }
+}

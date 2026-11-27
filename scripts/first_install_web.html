@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rise · Setup</title>
+<style nonce="__NONCE__">
+:root{color-scheme:light;--bg:#f6f8fa;--card:#fff;--text:#1f2328;--muted:#6e7781;--line:#d8dee4;--green:#1f883d;--blue:#0969da}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif}
+button,a,input{font:inherit}button{cursor:pointer}button:disabled{opacity:.42;cursor:not-allowed}
+button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+[hidden]{display:none!important}
+.topbar{height:56px;background:#fff;border-bottom:1px solid var(--line)}
+.topinner{max-width:720px;height:100%;margin:auto;padding:0 24px;display:flex;align-items:center;gap:9px}
+.mark{font-size:24px;font-weight:780;letter-spacing:-1.7px}
+.mark span{color:var(--green)}
+.top-label{font-size:13px;color:var(--muted);border-left:1px solid var(--line);padding-left:12px;margin-left:6px}
+.private{margin-left:auto;font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:20px;padding:3px 9px}
+.app{max-width:720px;margin:0 auto;padding:47px 24px 44px}
+.stepnav{display:flex;justify-content:space-between;gap:6px;margin-bottom:38px}
+.nav-step{border:1px solid var(--line);background:#fff;color:var(--muted);width:37px;height:37px;border-radius:10px;display:flex;align-items:center;justify-content:center;padding:0}
+.nav-step:hover{border-color:#8c959f}
+.nav-step[aria-current=step]{color:#fff;background:#24292f;border-color:#24292f}
+.num{font:12px/1.1 ui-monospace,SFMono-Regular,Consolas,monospace}
+.nav-text{display:none}
+.eyebrow{font:12px/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--muted);margin:0 0 9px}
+h1{font-size:clamp(24px,4vw,30px);line-height:1.2;letter-spacing:-.8px;font-weight:650;margin:0 0 10px}
+.subtitle{font-size:14px;color:var(--muted);margin:0 0 24px;max-width:520px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 1px 2px #1f232805}
+.panel-body{padding:23px 25px}
+.outcome{display:flex;gap:12px;align-items:center;min-height:26px}
+.badge{font-size:11px;font-weight:650;border:1px solid var(--line);border-radius:6px;white-space:nowrap;padding:3px 8px;color:var(--muted);background:#f6f8fa}
+.badge.pass{color:#116329;background:#dafbe1;border-color:#a8d5b3}
+.badge.blocked{color:#9a3412;background:#fff4e5;border-color:#e9ceb2}
+.badge.observed{color:#0550ae;background:#ddf4ff;border-color:#b6dcfe}
+#summary{font-size:13px;color:#57606a;line-height:1.35}
+#warning{font-size:12px;color:#9a3412;margin:12px 0 0}
+.quick{display:none}
+.action{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:18px;margin-top:21px;flex-wrap:wrap}
+.action label{display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer}
+.action input{accent-color:var(--green);width:16px;height:16px}
+.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:7px;background:#f6f8fa;padding:8px 13px;color:var(--text);font-weight:550;font-size:13px;min-height:36px}
+.btn:hover:not(:disabled){background:#eef1f4}
+.btn.primary{color:#fff;background:var(--green);border-color:#1a7f37}.btn.primary:hover:not(:disabled){background:#1a7f37}
+.advanced{border-top:1px solid #eaeef2;margin-top:22px;padding-top:16px}
+.advanced>summary{display:inline-block;color:var(--blue);cursor:pointer;font-size:12px;list-style:none}
+.advanced>summary::-webkit-details-marker{display:none}
+.advanced>summary::before{content:'›';font-size:17px;margin-right:7px;vertical-align:-1px}
+.advanced[open]>summary::before{content:'⌄'}
+.advanced-content{margin-top:20px;border-top:1px solid #eaeef2;padding-top:17px}
+.long-detail,.note p{font-size:12px;color:var(--muted);white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.6}
+.long-detail{margin:0 0 17px}.notes{display:grid;gap:12px}
+.note strong{display:block;font-size:12px;margin-bottom:3px}
+.note p{margin:0}
+.profile{border-top:1px solid #eaeef2;margin-top:20px;padding-top:16px}
+.profile h2{font-size:14px;margin:0 0 5px}
+.profile-label{font-size:10px;font-weight:650;color:#57606a;margin:0 0 7px;overflow-wrap:anywhere}
+.profile-notice{font-size:12px;color:#57606a;margin:0 0 12px}
+.profile dl{margin:0;font-size:12px}
+.profile-row{display:grid;grid-template-columns:100px minmax(0,1fr);gap:10px;padding:7px 0;border-top:1px solid #eaeef2}
+.profile dt{font-weight:600}.profile dd{margin:0;color:#57606a;overflow-wrap:anywhere}
+@media(max-width:400px){.profile-row{grid-template-columns:1fr;gap:2px}}
+.commands-label{display:flex;align-items:center;justify-content:space-between;gap:14px;color:var(--muted);font-size:12px;margin:18px 0 8px}
+a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+pre{margin:0;background:#f6f8fa;border:1px solid var(--line);padding:14px;border-radius:7px;overflow-wrap:anywhere;white-space:pre-wrap;font:12px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace}
+.panel-footer{border-top:1px solid var(--line);padding:15px 25px;display:flex;gap:8px;align-items:center;justify-content:flex-end}
+.panel-footer #back{margin-right:auto}
+#message{min-height:0;margin:12px 0 0;color:var(--muted);font-size:12px}
+#message:empty{display:none}
+.meta{display:flex;justify-content:space-between;gap:12px;color:#8c959f;font-size:11px;margin-top:18px}
+.meta a{color:var(--muted)}
+#loading{padding:23px;color:var(--muted);font-size:13px}
+@media(max-width:620px){.topinner{padding:0 18px}.app{padding:29px 16px 36px}.stepnav{margin-bottom:31px}.nav-step{width:35px;height:35px;border-radius:8px}.panel-body{padding:19px}.panel-footer{padding:14px 18px}.subtitle{margin-bottom:19px}.private{font-size:10px}.outcome{flex-wrap:wrap;gap:9px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="topinner"><span class="mark" aria-label="Rise">rise<span>↗</span></span><span class="top-label">Setup</span><span class="private">Private</span></div></header>
+<main class="app" id="content">
+<nav id="steps" class="stepnav" aria-label="Setup steps"></nav>
+<p id="position" class="eyebrow">01 / 07</p>
+<h1 id="step-heading" tabindex="-1">Your workspace</h1>
+<p id="subtitle" class="subtitle"></p>
+<div id="loading" class="panel">Checking…</div>
+<section id="panel" class="panel" aria-label="Current setup step" hidden>
+<div class="panel-body">
+<div class="outcome"><span id="status" class="badge">Checking</span><span id="summary"></span></div>
+<p id="warning" hidden>Source check failed. See details.</p>
+<div id="quick" class="quick" hidden></div>
+<section id="install-profile" class="profile" aria-labelledby="profile-heading" aria-describedby="profile-label profile-notice" hidden>
+<h2 id="profile-heading"></h2>
+<p id="profile-label" class="profile-label"></p>
+<p id="profile-notice" class="profile-notice"></p>
+<dl id="profile-rows"></dl>
+</section>
+<div id="storage-action" class="action" hidden>
+<label><input id="consent" type="checkbox"><span>Create local folders</span></label>
+<button id="prepare" class="btn primary" disabled>Prepare</button>
+</div>
+<details id="advanced" class="advanced">
+<summary>Details &amp; commands</summary>
+<div class="advanced-content">
+<p id="detail" class="long-detail"></p>
+<div id="notes" class="notes"></div>
+<div class="commands-label"><span>Terminal</span><a id="guide" href="/guide/run34" target="_blank" rel="noreferrer">Full guide</a></div>
+<pre id="commands"></pre>
+</div>
+</details>
+</div>
+<footer class="panel-footer">
+<button id="back" class="btn">Back</button>
+<button id="recheck" class="btn">Recheck</button>
+<button id="next" class="btn primary">Continue</button>
+</footer>
+</section>
+<p id="message" role="status" aria-live="polite"></p>
+<div class="meta"><span>Local only</span><a href="/guide/rights" target="_blank" rel="noreferrer">Privacy</a></div>
+<noscript><p>Enable JavaScript, or run ./rise install.</p></noscript>
+</main>
+<script nonce="__NONCE__">
+(function(){
+'use strict';
+const token='__TOKEN__';
+const id=function(s){return document.getElementById(s)};
+const summaries={welcome:'Local setup',source:'Verify local files',trust:'Local database',storage:'Private files',dependencies:'Packages & backup',application:'Initialize Rise',acceptance:'Login & review'};
+const titles={welcome:'Welcome to Rise',source:'Verify source',trust:'Database',storage:'Storage',dependencies:'Dependencies',application:'Install',acceptance:'Finish setup'};
+let report=null,selected=0,busy=false;
+function label(s){if(s==='PASS'||s==='VERIFIED_THIS_SESSION')return 'Verified';if(s==='BLOCKED')return 'Attention';if(s==='NOT_READY')return 'Needed';if(s==='GUIDE')return 'Start';if(s==='NOT_RUN')return 'Pending';if(s.endsWith('_ONLY'))return 'Observed';return 'Pending'}
+function style(s){return s==='BLOCKED'?'badge blocked':s==='PASS'||s==='VERIFIED_THIS_SESSION'?'badge pass':s.endsWith('_ONLY')?'badge observed':'badge'}
+function render(focus){
+ if(!report)return;
+ const step=report.steps[selected],nav=id('steps');nav.replaceChildren();
+ report.steps.forEach(function(item,i){
+  const btn=document.createElement('button');btn.type='button';btn.className='nav-step';
+  btn.setAttribute('aria-label','Step '+(i+1)+': '+item.title+', '+label(item.status));
+  if(i===selected)btn.setAttribute('aria-current','step');
+  const n=document.createElement('span');n.className='num';n.textContent=String(i+1).padStart(2,'0');btn.append(n);
+  btn.onclick=function(){selected=i;id('consent').checked=false;id('advanced').open=false;render(true)};nav.append(btn);
+ });
+ id('position').textContent=String(selected+1).padStart(2,'0')+' / '+String(report.steps.length).padStart(2,'0');
+ id('step-heading').textContent=titles[step.id]||step.title;
+ id('subtitle').textContent=step.id==='welcome'?'Set up your local environment.':(step.status==='BLOCKED'?'Review this step to continue.':'');
+ id('status').textContent=label(step.status);id('status').className=style(step.status);
+ id('summary').textContent=summaries[step.id]||'Review';
+ const profile=report.install_profile;
+ id('install-profile').hidden=!profile||(step.id!=='welcome'&&step.id!=='application');
+ id('profile-rows').replaceChildren();
+ if(profile){
+  id('profile-heading').textContent=profile.heading;
+  id('profile-label').textContent=profile.label;
+  id('profile-notice').textContent=profile.notice;
+  profile.rows.forEach(function(item){
+   const row=document.createElement('div'),term=document.createElement('dt'),value=document.createElement('dd');
+   row.className='profile-row';term.textContent=item[0];value.textContent=item[1];row.append(term,value);id('profile-rows').append(row)
+  });
+ }
+ id('detail').textContent=step.detail;
+ id('notes').replaceChildren();
+ step.notes.forEach(function(note){
+  const row=document.createElement('div'),strong=document.createElement('strong'),p=document.createElement('p');row.className='note';
+  strong.textContent=note[0];p.textContent=note[1];row.append(strong,p);id('notes').append(row)
+ });
+ id('commands').textContent=step.commands;id('guide').href=step.guide;
+ id('storage-action').hidden=step.id!=='storage'||!report.can_prepare_storage;
+ id('consent').disabled=busy||!report.can_prepare_storage;
+ id('prepare').disabled=busy||!report.can_prepare_storage||!id('consent').checked;
+ id('back').disabled=busy||selected===0;
+ id('next').disabled=busy||selected===report.steps.length-1;
+ id('recheck').disabled=busy;
+ id('warning').hidden=report.steps[1].status!=='BLOCKED'||selected!==1;
+ id('loading').hidden=true;id('panel').hidden=false;
+ if(focus)id('step-heading').focus()
+}
+async function api(path,opts){
+ const response=await fetch(path,Object.assign({cache:'no-store',headers:{'X-Rise-Token':token}},opts||{}));
+ const data=await response.json();if(!response.ok)throw new Error(data.error||'Check stopped');return data
+}
+async function refresh(){
+ if(busy)return;busy=true;id('message').textContent='';
+ try{report=await api('/api/status');id('consent').checked=false}
+ catch(err){id('message').textContent=err.message;id('loading').textContent='Unable to check'}
+ finally{busy=false;render(false)}
+}
+id('recheck').onclick=refresh;
+id('consent').onchange=function(){id('prepare').disabled=busy||!report||!report.can_prepare_storage||!id('consent').checked};
+id('back').onclick=function(){if(selected){selected--;id('consent').checked=false;id('advanced').open=false;render(true)}};
+id('next').onclick=function(){if(report&&selected<report.steps.length-1){selected++;id('consent').checked=false;id('advanced').open=false;render(true)}};
+id('prepare').onclick=async function(){
+ if(busy||!report||!report.can_prepare_storage||!id('consent').checked)return;
+ busy=true;render(false);id('message').textContent='Preparing…';
+ try{
+  const result=await api('/api/prepare-storage',{method:'POST',headers:{'X-Rise-Token':token,'Content-Type':'application/json'},body:JSON.stringify({consent:true})});
+  report=await api('/api/status');id('message').textContent=result.status==='PASS'?'Folders ready.':result.detail
+ }catch(err){id('message').textContent=err.message}
+ finally{busy=false;id('consent').checked=false;render(false)}
+};
+refresh();
+})();
+</script>
+</body>
+</html>

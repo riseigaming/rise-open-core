@@ -1,0 +1,39 @@
+<?php
+$web=['web','cmsUserActivity','cmsSessionCheck','EnforceSiteCountryRestriction','PublicFrontendMaintenance','cmsLanguage','SyntheticLocalFinance'];
+$defs=[
+ ['POST','/cms/internal-games/slot/spin','cms.internalGames.spin','Front\\SlotController@spin',['throttle:internal-games-spin']],
+ ['GET','/cms/internal-games/slot/snapshot','cms.internalGames.slot.snapshot','Front\\SlotController@snapshot',['throttle:internal-games-snapshot']],
+ ['GET','/cms/internal-games/skyrush/snapshot','cms.internalGames.skyRush.snapshot','Front\\SkyRushController@snapshot',['throttle:internal-crash-snapshot']],
+ ['POST','/cms/internal-games/skyrush/bet','cms.internalGames.skyRush.bet','Front\\SkyRushController@bet',['throttle:internal-crash-action']],
+ ['POST','/cms/internal-games/skyrush/cashout','cms.internalGames.skyRush.cashout','Front\\SkyRushController@cashout',['throttle:internal-crash-action']],
+
+ ['GET','/cms/wallet','cms.wallet.index','Front\\WalletController@index',['cmsUser']],
+ ['POST','/cms/wallet/provision','cms.wallet.provision','Front\\WalletController@provision',['cmsUser']],
+ ['POST','/cms/wallet/switch','cms.wallet.switch','Front\\WalletController@switch',['cmsUser']],
+ ['POST','/cms/promotion-code/redeem','cms.promotionCode.redeem','Front\\PromotionCodeController@checkPromotionCode',['cmsUser','throttle:10,1']],
+ ['POST','/cms/internal-games/roulette/spin','cms.internalGames.roulette.spin','Front\\RouletteController@spin',['throttle:internal-games-spin']],
+ ['GET','/cms/internal-games/roulette/snapshot','cms.internalGames.roulette.snapshot','Front\\RouletteController@snapshot',['throttle:internal-games-snapshot']],
+ ['POST','/cms/internal-games/blackjack/start','cms.internalGames.blackjack.start','Front\\BlackjackController@start',['throttle:internal-games-spin']],
+ ['POST','/cms/internal-games/blackjack/action','cms.internalGames.blackjack.action','Front\\BlackjackController@action',['throttle:internal-games-spin']],
+ ['GET','/cms/internal-games/blackjack/snapshot','cms.internalGames.blackjack.snapshot','Front\\BlackjackController@snapshot',['throttle:internal-games-snapshot']],
+ ['GET','/cms/admin/finance','cms.admin.transactions.manualOverride.create','Admin\\ManualFinanceOverrideController@create',['cmsUser','cmsStaffPermission:finance.manual.override']],
+ ['POST','/cms/admin/finance','cms.admin.transactions.manualOverride.store','Admin\\ManualFinanceOverrideController@store',['cmsUser','cmsStaffPermission:finance.manual.override','cmsRecentAuth']],
+ ['POST','/cms/admin/finance/provision','cms.admin.finance.provision','Admin\\LocalFinanceController@provision',['cmsUser','cmsStaffPermission:finance.manual.override','cmsRecentAuth']],
+ ['POST','/cms/admin/promotion-codes','cms.admin.promotionCodes.store','Admin\\LocalFinanceController@createPromo',['cmsUser','cmsAdmin','cmsRecentAuth']],
+ ['POST','/cms/admin/internal-games/rounds/{roundId}/refund','cms.admin.internalGames.refund','Admin\\LocalFinanceController@refund',['cmsUser','cmsAdmin','cmsRecentAuth']],
+];
+return ['migration_names'=>['2026_10_28_140100_install_canonical_wallet_domain','2026_10_28_140200_install_canonical_financial_records','2026_10_28_140300_install_canonical_manual_overrides','2026_10_28_140400_extend_internal_game_financial_contract'],
+ 'required_columns'=>[
+ 'internal_game_rounds'=>['debit_transaction_id','win_transaction_id','refund_transaction_id','refunded_at','error_message'],
+ 'wallet_accounts'=>['id','cms_user_id','wallet_type','wallet_key','asset','available_balance','pending_balance','status','meta'],
+ 'wallet_ledger_entries'=>['id','wallet_account_id','cms_user_id','entry_type','direction','status','amount','balance_before','balance_after','asset','source_type','source_reference','idempotency_key','meta'],
+ 'wallet_user_preferences'=>['cms_user_id','active_wallet_account_id','changed_at','meta'],
+ 'wallet_conversion_requests'=>['id','cms_user_id','status','idempotency_key'],
+ 'wallet_transfer_requests'=>['id','cms_user_id','status','idempotency_key'],
+ 'cms_user_transactions'=>['id','cms_user_id','transactionId','action','status','amount','currency','source_wallet_account_id','source_wallet_type','source_currency','exact_amount','exact_before_balance','exact_after_balance','transaction_precision_scale','exact_precision_source','event_type','promotion_code_id'],
+ 'cms_promotion_codes'=>['id','promo_code','currency','promo_amount','promo_count','promo_left','status','start_date','end_date','deleted_at'],
+ 'finance_manual_overrides'=>['id','operation_id','actor_admin_id','cms_user_id','wallet_account_id','economic_action','amount','balance_before','balance_after','request_fingerprint','meta'],
+ 'finance_reset_controls'=>['id','writes_closed','version','declaration_reference','applied_plan_sha256','isolation_proof_sha256','closed_at','opened_at','created_at','updated_at'],
+ 'cms_webhook_logs'=>['id','request','message','reqdate'],
+ 'internal_game_round_bets'=>['id','internal_game_round_id','line_no','bet_type','bet_key','covered_numbers_json','stake_amount','payout_multiplier','payout_amount','status','meta_json'],
+ ],'routes'=>array_map(fn($r)=>['method'=>$r[0],'uri'=>$r[1],'name'=>$r[2],'controller'=>'App\\Http\\Controllers\\Cms\\'.$r[3],'middleware'=>array_merge($web,$r[4]),'id'=>'CANONICAL-FINANCE-'.$r[2]],$defs)];

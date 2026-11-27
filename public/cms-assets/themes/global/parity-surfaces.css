@@ -1,0 +1,33 @@
+/* Global-only read-only parity modules. No WinX assets modified. */
+.globalParityPanel{margin:18px clamp(16px,3vw,32px);padding:18px;border:1px solid var(--global-border,rgba(255,255,255,.15));border-radius:18px;background:var(--global-surface,rgba(255,255,255,.06));color:var(--global-text,#fff)}
+.globalParityPanel h2{margin:0 0 12px;font-size:clamp(18px,2.1vw,24px);color:inherit}
+.globalParityPanel a{color:inherit}
+.globalParityScroll{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x proximity}
+.globalParityWinner{flex:0 0 clamp(200px,28vw,280px);display:grid;gap:6px;padding:14px;border:1px solid var(--global-border,rgba(255,255,255,.1));border-radius:14px;scroll-snap-align:start}
+.globalParityWinnerProfileAction{appearance:none;width:100%;margin:0;padding:0;border:0;background:none;color:inherit;font:inherit;text-align:start;cursor:pointer}.globalParityWinnerProfileAction:hover{text-decoration:underline}.globalParityWinnerProfileAction:focus-visible{outline:2px solid var(--global-accent,#8cbaff);outline-offset:4px;border-radius:3px}
+.globalParityWinner span,.globalParityWinner small{opacity:.78}.globalParityWinner b{font-variant-numeric:tabular-nums}
+.globalParityPromos{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:12px}
+.globalParityPromoCard{display:grid;gap:10px;overflow:hidden;min-width:0;padding:10px;background:var(--global-surface-soft,rgba(255,255,255,.06));border-radius:14px;text-decoration:none}
+.globalParityPromoCard img{display:block;max-width:100%;width:100%;height:135px;object-fit:cover;border-radius:10px}
+.globalParityContact{display:flex;gap:20px;flex-wrap:wrap;justify-content:space-between}.globalParityContact>div{flex:1 1 280px}
+.globalParityContact p{opacity:.8}.globalParityContact :is(a,button):focus-visible,.globalParityPromos a:focus-visible{outline:2px solid var(--global-accent);outline-offset:3px}
+
+.globalAccountFamilyTable{overflow:auto}.globalAccountFamilyTable table{width:100%;min-width:450px;border-collapse:collapse}.globalAccountFamilyTable th,.globalAccountFamilyTable td{text-align:start;padding:12px;border-bottom:1px solid var(--global-border,rgba(255,255,255,.15))}
+.globalParityCodeForm{display:grid;max-width:620px;gap:15px}.globalParityCodeForm input{width:100%;min-height:44px;padding:10px;border-radius:9px;background:var(--global-surface-soft);color:var(--global-text);border:1px solid var(--global-border)}
+.globalInstallPlatforms{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px;margin:20px 0}.globalInstallCard summary{cursor:pointer}.globalInstallCard li{margin:8px 0;line-height:1.6}
+
+.globalInstallQr{display:flex;align-items:center;gap:16px;margin:16px 0;flex-wrap:wrap}.globalInstallQr canvas{background:#fff;border-radius:8px;padding:6px}
+
+/* On compact Home, the shared winner feed and permitted social coupons use one tab surface. */
+.globalParityMobileSocial{display:none}
+.globalParityMobileTabList{display:flex;gap:8px;margin-bottom:12px}
+.globalParityMobileTabList button{flex:1;min-height:44px;border:1px solid var(--global-border,rgba(255,255,255,.15));border-radius:10px;background:transparent;color:inherit;font:inherit;font-weight:700;cursor:pointer}
+.globalParityMobileTabList button[aria-selected="true"]{background:var(--global-surface-soft,rgba(255,255,255,.1));border-color:var(--global-accent,#8cbaff)}
+.globalParityMobileTabList button:focus-visible,.globalParityMobileWinner:focus-visible{outline:2px solid var(--global-accent,#8cbaff);outline-offset:2px}
+.globalParityMobileSocial [data-global-mobile-social-panel][hidden]{display:none!important}
+.globalParityMobileRow{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--global-border,rgba(255,255,255,.15))}
+.globalParityMobileRow b{flex-shrink:0;font-variant-numeric:tabular-nums}
+.globalParityMobileWinner{display:grid;gap:5px;min-width:0;overflow-wrap:anywhere;text-align:start;color:inherit}
+button.globalParityMobileWinner{appearance:none;padding:0;border:0;background:none;font:inherit;cursor:pointer}
+.globalParityMobileWinner small{opacity:.75}
+@media(max-width:899px){.globalParityMobileSocial{display:block}.globalParityPanel[data-global-weekly-winners]{display:none}}

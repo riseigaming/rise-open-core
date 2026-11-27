@@ -1,0 +1,55 @@
+name: Public documentation quality
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'README.md'
+      - 'AGENTS.md'
+      - 'CONTRIBUTING.md'
+      - 'docs/**'
+      - 'scripts/check_public_docs.py'
+      - 'scripts/first_install_web.py'
+      - 'scripts/first_install_web.html'
+      - 'scripts/first_install_wizard.py'
+      - 'app/Providers/AppServiceProvider.php'
+      - 'app/Console/Commands/CheckFreshInstallationCommand.php'
+      - 'resources/views/cms/admin/betting/chess-canonical-read-model.blade.php'
+      - 'tests/python/test_public_docs_quality.py'
+      - 'tests/python/test_readme_editorial.py'
+      - 'tests/python/test_first_install*.py'
+      - '.github/workflows/public-docs-quality.yml'
+  pull_request:
+    paths:
+      - 'README.md'
+      - 'AGENTS.md'
+      - 'CONTRIBUTING.md'
+      - 'docs/**'
+      - 'scripts/check_public_docs.py'
+      - 'scripts/first_install_web.py'
+      - 'scripts/first_install_web.html'
+      - 'scripts/first_install_wizard.py'
+      - 'app/Providers/AppServiceProvider.php'
+      - 'app/Console/Commands/CheckFreshInstallationCommand.php'
+      - 'resources/views/cms/admin/betting/chess-canonical-read-model.blade.php'
+      - 'tests/python/test_public_docs_quality.py'
+      - 'tests/python/test_readme_editorial.py'
+      - 'tests/python/test_first_install*.py'
+      - '.github/workflows/public-docs-quality.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check public documentation integrity
+        run: python3 scripts/check_public_docs.py
+      - name: Run documentation contract tests
+        run: python3 -B -m unittest discover -s tests/python -p 'test_public_docs_quality.py'
+      - name: Check README product scope and links
+        run: python3 -B -m unittest discover -s tests/python -p 'test_readme_editorial.py'
+      - name: Verify installer presentation and safety boundaries
+        run: python3 -B -m unittest discover -s tests/python -p 'test_first_install*.py'

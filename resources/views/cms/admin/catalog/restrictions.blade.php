@@ -1,0 +1,12 @@
+@extends('cms.admin.index')
+@section('title', __('admin_catalog.catalog_restrictions'))
+@section('content')
+<div class="container-fluid py-3"><h1 class="h2 mb-3">{{ __('admin_catalog.catalog_restrictions') }}</h1>@include('cms.admin.catalog.notice')
+
+<div class="card mb-3"><div class="card-body"><h2 class="h3">{{ __('admin_catalog.add_country') }}</h2><form id="country-form" class="row align-items-end" method="post" action="{{ route('cms.admin.countries.store') }}">@csrf<div class="col-md-5"><label class="form-label" for="name">{{ __('admin_catalog.country_name') }}</label><input class="form-control" name="name" id="name" required></div><div class="col-md-4"><label class="form-label" for="iso2">ISO2 kodu</label><input class="form-control" name="iso2" id="iso2" pattern="[A-Za-z]{2}" maxlength="2" required></div><div class="col-md-3"><button class="btn btn-primary">{{ __('admin_catalog.add_country') }}</button></div></form></div></div>
+<div class="card"><div class="card-body"><p>{{ __('admin_catalog.geo_help') }}</p>
+@foreach($countries as $country)<form class="row align-items-end mb-4" method="post" action="{{ route('cms.admin.restrictions.update',$country) }}">@csrf<div class="col-md-3"><strong>{{ $country->name }} · {{ $country->iso2 }}</strong></div><div class="col-md-2"><label class="form-label">{{ __('admin_catalog.casino_restriction') }}<select class="form-select" name="casino_blocked"><option value="0" @selected(!in_array('casino',$policy['countries'][(string)$country->id]['products']??[]))>{{ __('admin_catalog.allowed') }}</option><option value="1" @selected(in_array('casino',$policy['countries'][(string)$country->id]['products']??[]))>{{ __('admin_catalog.closed') }}</option></select></label></div><div class="col-md-2"><label class="form-label">{{ __('admin_catalog.vpn_policy') }}<select class="form-select" name="vpn_policy"><option value="allow" @selected($policy['vpn_policy']==='allow')>{{ __('admin_catalog.allowed') }}</option><option value="block" @selected($policy['vpn_policy']==='block')>Engelli</option></select></label></div><div class="col-md-3"><label class="form-label">{{ __('admin_catalog.reason') }}<input class="form-control" name="reason" required minlength="3" value="{{ $policy['countries'][(string)$country->id]['reason']??'' }}"></label></div><div class="col-md-2"><button class="btn btn-outline-primary">{{ __('admin_catalog.save_policy') }}</button></div></form>@endforeach
+</div></div>
+
+</div>
+@endsection

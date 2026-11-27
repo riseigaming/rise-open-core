@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'real' => 'Real', 'real_balance' => 'Wallet balance', 'real_note' => 'This game uses your selected wallet balance. Wagers and wins are final after settlement.',
+    'demo' => 'Demo', 'credits' => 'Virtual credits', 'balance' => 'Demo balance',
+    'max_payout' => 'Maximum payout',
+    'payout_limit' => 'Possible return exceeds the maximum allowed payout.',
+    'dedicated_action' => 'Use the Dice roll action for this game.',
+    'bet_amount' => 'Bet amount', 'bet' => 'Roll dice', 'rolling' => 'Rolling…', 'retry' => 'Retry roll',
+    'decrease' => 'Decrease bet', 'increase' => 'Increase bet', 'half' => 'Halve bet', 'double' => 'Double bet',
+    'under' => 'Under', 'over' => 'Over', 'target' => 'Your number', 'rolled' => 'Rolled number',
+    'multiplier' => 'Multiplier', 'payout' => 'Possible payout', 'chance' => 'Win chance',
+    'won' => 'You won', 'lost' => 'No win this roll', 'ready' => 'Choose your number and roll.',
+    'history' => 'My rolls', 'history_empty' => 'Your rolls will appear here.',
+    'result' => 'Result', 'return' => 'Return', 'settings' => 'Game settings', 'sound' => 'Sound',
+    'animation' => 'Roll animation', 'rules' => 'Under wins below your number. Over wins on or above it. Returns include the stake and are rounded down to 0.01 in the displayed currency.',
+    'demo_note' => 'No real money is used. Demo credits cannot be withdrawn.',
+    'rng' => 'Cryptographic server randomness; no independent seed verification or RNG certification.',
+    'rtp' => 'Theoretical return', 'limits' => 'Bet limits', 'error' => 'The roll could not be completed.',
+    'invalid' => 'Check the bet amount and number.', 'insufficient' => 'Insufficient balance.',
+    'busy' => 'A roll is already in progress. Try again shortly.',
+    'conflict' => 'This request was already used for a different roll.',
+    'network' => 'Connection interrupted. Retry to recover the same roll without placing another bet.',
+    'expired' => 'This game session has ended. Reopen Dice to start a new session.',
+    'refresh' => 'Refresh results', 'refresh_error' => 'Results could not be refreshed. Your last result is kept.',
+];

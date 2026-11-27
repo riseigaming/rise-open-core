@@ -1,0 +1,249 @@
+/* Admin-only in-app notices. Deliberately namespaced to avoid frontend theme leakage. */
+.cms-admin-notice-stack {
+    --cms-admin-notice-gap: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--cms-admin-notice-gap);
+    pointer-events: none;
+    position: fixed;
+    z-index: 1000000;
+}
+
+.cms-admin-notice-stack.is-top-center {
+    align-items: center;
+    left: 16px;
+    right: 16px;
+    top: 18px;
+}
+
+.cms-admin-notice-stack.is-bottom-right {
+    align-items: flex-end;
+    bottom: 18px;
+    left: 16px;
+    right: 18px;
+}
+
+.cms-admin-notice-stack.is-center-center {
+    align-items: center;
+    left: 16px;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.cms-admin-notice {
+    align-items: center;
+    background: linear-gradient(135deg, rgba(22, 32, 51, 0.96), rgba(17, 25, 40, 0.93));
+    border: 1px solid rgba(141, 163, 196, 0.2);
+    border-radius: 22px;
+    box-sizing: border-box;
+    box-shadow: 0 14px 30px rgba(3, 8, 20, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    color: #f2f4f8;
+    display: grid;
+    gap: 13px;
+    grid-template-columns: 32px minmax(0, 1fr) auto;
+    min-height: 76px;
+    overflow: hidden;
+    padding: 12px 13px 12px 16px;
+    pointer-events: auto;
+    width: 380px;
+    max-width: 100%;
+}
+
+.cms-admin-notice:not(.has-gauge) {
+    width: 340px;
+}
+
+.cms-admin-notice.has-gauge {
+    gap: 9px;
+    grid-template-columns: 32px minmax(0, 1fr) 66px 22px;
+}
+
+.cms-admin-notice.has-gauge .cms-admin-notice__dismiss {
+    grid-column: 4;
+}
+
+.cms-admin-notice::before {
+    background: linear-gradient(90deg, transparent, rgba(214, 228, 255, 0.12), transparent);
+    content: '';
+    height: 1px;
+    left: 20px;
+    position: absolute;
+    right: 20px;
+    top: 0;
+}
+
+.cms-admin-notice__icon {
+    align-items: center;
+    color: #9fb6d3;
+    display: inline-flex;
+    height: 32px;
+    justify-content: center;
+    width: 32px;
+}
+
+.cms-admin-notice__icon svg {
+    display: block;
+    height: 25px;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.8;
+    width: 25px;
+}
+
+.cms-admin-notice.is-success .cms-admin-notice__icon { color: #95cdb7; }
+.cms-admin-notice.is-info .cms-admin-notice__icon { color: #9fb6d3; }
+.cms-admin-notice.is-warning .cms-admin-notice__icon { color: #e3c078; }
+.cms-admin-notice.is-error .cms-admin-notice__icon { color: #e89b9b; }
+
+.cms-admin-notice__copy {
+    min-width: 0;
+}
+
+.cms-admin-notice__title,
+.cms-admin-notice__message {
+    display: block;
+    overflow-wrap: anywhere;
+}
+
+.cms-admin-notice__title {
+    color: #f2f4f8;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+    font-size: 15px;
+    font-weight: 650;
+    letter-spacing: -0.01em;
+    line-height: 1.18;
+}
+
+.cms-admin-notice__message {
+    color: #aeb5c3;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+    font-size: 12.5px;
+    line-height: 1.3;
+    margin-top: 3px;
+}
+
+.cms-admin-notice__dismiss {
+    align-items: center;
+    align-self: start;
+    background: rgba(163, 180, 205, 0.11);
+    border: 0;
+    border-radius: 999px;
+    color: #c7d0df;
+    cursor: pointer;
+    display: inline-flex;
+    flex: 0 0 auto;
+    height: 22px;
+    justify-content: center;
+    margin: 1px 0 0 2px;
+    padding: 0;
+    width: 22px;
+}
+
+.cms-admin-notice__dismiss:focus-visible {
+    outline: 2px solid #b8d2ff;
+    outline-offset: 2px;
+}
+
+.cms-admin-notice__dismiss svg {
+    height: 13px;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-width: 2;
+    width: 13px;
+}
+
+.cms-admin-notice__gauge {
+    --cms-admin-notice-metric: 0;
+    align-items: center;
+    background: conic-gradient(#ff665f calc(var(--cms-admin-notice-metric) * 1%), #3d475a 0);
+    border-radius: 50%;
+    display: inline-flex;
+    flex: 0 0 auto;
+    height: 66px;
+    justify-content: center;
+    margin-left: 2px;
+    position: relative;
+    width: 66px;
+}
+
+.cms-admin-notice__gauge::before {
+    background: #1a2538;
+    border: 1px solid rgba(181, 197, 220, 0.08);
+    border-radius: inherit;
+    content: '';
+    inset: 6px;
+    position: absolute;
+}
+
+.cms-admin-notice__metric {
+    color: #c9ced8;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+    font-size: 17px;
+    font-variant-numeric: tabular-nums;
+    font-weight: 650;
+    position: relative;
+}
+
+.cms-admin-notice--persistent {
+    margin: 10px 12px 0;
+    max-width: none;
+    position: relative;
+    width: auto;
+}
+
+.cms-admin-notice--persistent .cms-admin-notice__dismiss {
+    display: none;
+}
+
+.cms-admin-notice__action {
+    background: rgba(188, 208, 239, 0.12);
+    border: 1px solid rgba(188, 208, 239, 0.17);
+    border-radius: 9px;
+    color: #dbe6f8;
+    cursor: pointer;
+    font: 650 12px/1.1 -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+    padding: 8px 9px;
+    white-space: nowrap;
+}
+
+.cms-admin-notice__action:focus-visible {
+    outline: 2px solid #b8d2ff;
+    outline-offset: 2px;
+}
+
+@media (max-width: 600px) {
+    .cms-admin-notice-stack.is-top-center,
+    .cms-admin-notice-stack.is-center-center {
+        top: max(12px, env(safe-area-inset-top));
+    }
+
+    .cms-admin-notice-stack.is-bottom-right {
+        bottom: max(12px, env(safe-area-inset-bottom));
+        right: 16px;
+    }
+
+    .cms-admin-notice {
+        border-radius: 18px;
+        gap: 10px;
+        grid-template-columns: 29px minmax(0, 1fr) auto;
+        min-height: 70px;
+        padding: 11px 11px 11px 13px;
+        width: 360px;
+    }
+
+    .cms-admin-notice:not(.has-gauge) {
+        width: 330px;
+    }
+
+    .cms-admin-notice.has-gauge {
+        grid-template-columns: 29px minmax(0, 1fr) 62px 22px;
+    }
+
+    .cms-admin-notice__icon,
+    .cms-admin-notice__icon svg { height: 23px; width: 23px; }
+    .cms-admin-notice__title { font-size: 14px; }
+    .cms-admin-notice__message { font-size: 12px; }
+    .cms-admin-notice__gauge { height: 62px; width: 62px; }
+}

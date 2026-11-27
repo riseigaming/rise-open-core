@@ -1,0 +1,280 @@
+{
+  "schema": "rise-selected-frontend-vendor-provenance-v1",
+  "packages": [
+    {
+      "package": "jquery",
+      "version": "3.7.1",
+      "registry_url": "https://registry.npmjs.org/jquery/3.7.1",
+      "integrity": "sha512-m4avr8yL8kmFN8psrbFFFmB/If14iN5o9nw/NgnnM+kybDJpRsAynV2BsfpTYrTRysYUdADVD7CkUUizgkpLfg==",
+      "package_sha256": "68a9f787516da47c680e09c187bcbac4536b6f85d90eb882844e12919e583f53",
+      "license_metadata": "MIT",
+      "license_files": [
+        "LICENSE.txt"
+      ],
+      "files": [
+        {
+          "source": "dist/jquery.min.js",
+          "target": "public/vendor/jquery/jquery.min.js",
+          "upstream_sha256": "fc9a93dd241f6b045cbff0481cf4e1901becd0e12fb45166a8f17f95823f0b1a",
+          "target_sha256": "fc9a93dd241f6b045cbff0481cf4e1901becd0e12fb45166a8f17f95823f0b1a",
+          "transforms": []
+        }
+      ]
+    },
+    {
+      "package": "bootstrap",
+      "version": "5.3.8",
+      "registry_url": "https://registry.npmjs.org/bootstrap/5.3.8",
+      "integrity": "sha512-HP1SZDqaLDPwsNiqRqi5NcP0SSXciX2s9E+RyqJIIqGo+vJeN5AJVM98CXmW/Wux0nQ5L7jeWUdplCEf0Ee+tg==",
+      "package_sha256": "8b02d4a7482e0f0a2b1da58f1c9c86830e96cc2f77f094f89e4681b19886bc38",
+      "license_metadata": "MIT",
+      "license_files": [
+        "LICENSE"
+      ],
+      "files": [
+        {
+          "source": "dist/js/bootstrap.bundle.min.js",
+          "target": "public/vendor/bootstrap/bootstrap.bundle.min.js",
+          "upstream_sha256": "e4fd49181388c48ec5040bd3fe66f57c29c8e67fcd8502b3354b96ec7ab47cc7",
+          "target_sha256": "c6f670216aedd2c61ec83102f7e40c1c44114eecd7f37b2edc332757390c386a",
+          "transforms": [
+            "remove source-map hints and remote font imports"
+          ]
+        }
+      ],
+      "bundled_dependencies": [
+        {
+          "package": "@popperjs/core",
+          "version": "2.11.8",
+          "version_evidence": "Bootstrap 5.3.8 peer dependency plus comparison of all 55 bundled source-map modules to the 2.11.8 package",
+          "registry_url": "https://registry.npmjs.org/@popperjs/core/2.11.8",
+          "package_sha256": "8e09bdfa912035668e62cea61321bce27cbd011b85672055db25d271bd63af49",
+          "license_metadata": "MIT",
+          "license_path": "public/vendor/bootstrap/POPPER-LICENSE.md",
+          "license_sha256": "bf67e2c9b7974543bb18ced3a0b37f53729aaff953b442dd89a3adaf90fd93e8"
+        }
+      ]
+    },
+    {
+      "package": "@tabler/core",
+      "version": "1.0.0",
+      "registry_url": "https://registry.npmjs.org/@tabler/core/1.0.0",
+      "integrity": "sha512-uFmv6f8TAaW2JaGwzjT1LfK+TjmBQSTCoznCMdV5uur4cv4TtJlV8Hh1Beu55YX0svMtOQ0Xts7tYv/+qBEcfA==",
+      "package_sha256": "961c35dfacae28bff16a63604754dfac640d74694636a7dfe8642602d86a1f30",
+      "license_metadata": "MIT",
+      "license_files": [
+        "LICENSE"
+      ],
+      "files": [
+        {
+          "source": "dist/css/tabler.min.css",
+          "target": "public/vendor/tabler/tabler.min.css",
+          "upstream_sha256": "68efb8668c8d3d91c27b16dba6b0d853d2c2c6c86ab33400d1220d1587e8b373",
+          "target_sha256": "68efb8668c8d3d91c27b16dba6b0d853d2c2c6c86ab33400d1220d1587e8b373",
+          "transforms": []
+        }
+      ]
+    },
+    {
+      "package": "toastr",
+      "version": "2.1.4",
+      "registry_url": "https://registry.npmjs.org/toastr/2.1.4",
+      "integrity": "sha512-LIy77F5n+sz4tefMmFOntcJ6HL0Fv3k1TDnNmFZ0bU/GcvIIfy6eG2v7zQmMiYgaalAiUv75ttFrPn5s0gyqlA==",
+      "package_sha256": "71095c2d7de8ced0ec046be6a7c1574e2d35f67a1c61e371ef0bdb3eb2cdb570",
+      "license_metadata": [
+        {
+          "url": "http://www.opensource.org/licenses/mit-license.php",
+          "type": "MIT"
+        }
+      ],
+      "license_files": [
+        "LICENSE"
+      ],
+      "files": [
+        {
+          "source": "build/toastr.min.js",
+          "target": "public/vendor/toastr/toastr.min.js",
+          "upstream_sha256": "1e0c2ad4e069276efa1d43fd1f7549912bfd64219119037e26574f27ca4d7143",
+          "target_sha256": "7fe565f3385448e1ec8d57dc2c1639d723561f1aabc2e3d547e284bbf9f9b073",
+          "transforms": [
+            "remove source-map hints and remote font imports"
+          ]
+        },
+        {
+          "source": "build/toastr.min.css",
+          "target": "public/vendor/toastr/toastr.min.css",
+          "upstream_sha256": "47dd690f8f315bea076e92581a7e7147443bb4c847e313ab5a7d50a8c44836d0",
+          "target_sha256": "47dd690f8f315bea076e92581a7e7147443bb4c847e313ab5a7d50a8c44836d0",
+          "transforms": []
+        }
+      ],
+      "additional_license_evidence": {
+        "exact_2_1_4_readme": "public/vendor/toastr/LICENSE-DECLARATION-2.1.4.md",
+        "readme_sha256": "421f5e12c98663c0f1a2738fa0197839668a1eda35d3bb4e764f4fd034d77f09",
+        "upstream_license_blob": "d55c822098461cfb0a2c62abd624f92d8e1456b6",
+        "license_path": "public/vendor/toastr/LICENSE",
+        "license_sha256": "d9b630916d3d2930e34a958701969e47438a940bd91b2fa8dc6956f41d15e010",
+        "note": "The exact npm release README declares MIT; its tarball omits LICENSE. Official upstream licence text separately retained."
+      }
+    },
+    {
+      "package": "bootstrap-table",
+      "version": "1.27.3",
+      "registry_url": "https://registry.npmjs.org/bootstrap-table/1.27.3",
+      "integrity": "sha512-XB+8E5g72tdd18qcoV00pnz5PDl/w+sAaDrliJy11YZrJp3nj3Uw1KogblHYMsbeQW+FhAMJOu9HG8l0M8LyQA==",
+      "package_sha256": "a128a8fa4ab97a45119031622ad7bbda4e3dad4c74861d5fde5b8d6f8ab10646",
+      "license_metadata": "MIT",
+      "license_files": [
+        "LICENSE"
+      ],
+      "files": [
+        {
+          "source": "dist/bootstrap-table.min.js",
+          "target": "public/vendor/bootstrap-table/bootstrap-table.min.js",
+          "upstream_sha256": "69aab29d582b7fa85ee583f8c1ca1b51c78e918ceb8d9c0b3a0d21b0d08a302d",
+          "target_sha256": "69aab29d582b7fa85ee583f8c1ca1b51c78e918ceb8d9c0b3a0d21b0d08a302d",
+          "transforms": []
+        },
+        {
+          "source": "dist/bootstrap-table.min.css",
+          "target": "public/vendor/bootstrap-table/bootstrap-table.min.css",
+          "upstream_sha256": "cbdb17d0bf175b61e41175fe7ad0f8dab1282f72f7523a3046dc579b2c589d43",
+          "target_sha256": "cbdb17d0bf175b61e41175fe7ad0f8dab1282f72f7523a3046dc579b2c589d43",
+          "transforms": []
+        }
+      ]
+    },
+    {
+      "package": "@fortawesome/fontawesome-free",
+      "version": "6.7.2",
+      "registry_url": "https://registry.npmjs.org/@fortawesome/fontawesome-free/6.7.2",
+      "integrity": "sha512-JUOtgFW6k9u4Y+xeIaEiLr3+cjoUPiAuLXoyKOJSia6Duzb7pq+A76P9ZdPDoAoxHdHzq6gE9/jKBGXlZT8FbA==",
+      "package_sha256": "794284b4ac7f3e30825bbeea1a073f542c45dff83f8146625f600f1015c9d52b",
+      "license_metadata": "(CC-BY-4.0 AND OFL-1.1 AND MIT)",
+      "license_files": [
+        "LICENSE.txt"
+      ],
+      "files": [
+        {
+          "source": "css/all.min.css",
+          "target": "public/vendor/fontawesome/css/all.min.css",
+          "upstream_sha256": "74005d7c17d4a02f2f25404ec0655d9bc2fdaa53166874c87d7b7eec69d9088a",
+          "target_sha256": "74005d7c17d4a02f2f25404ec0655d9bc2fdaa53166874c87d7b7eec69d9088a",
+          "transforms": []
+        },
+        {
+          "source": "webfonts/fa-brands-400.woff2",
+          "target": "public/vendor/fontawesome/webfonts/fa-brands-400.woff2",
+          "upstream_sha256": "d7236a19bf23cbb2027280e8f51dc99d6c45976a2ed60de73382b034b18a2b68",
+          "target_sha256": "d7236a19bf23cbb2027280e8f51dc99d6c45976a2ed60de73382b034b18a2b68",
+          "transforms": []
+        },
+        {
+          "source": "webfonts/fa-regular-400.woff2",
+          "target": "public/vendor/fontawesome/webfonts/fa-regular-400.woff2",
+          "upstream_sha256": "e3456d1283b9d75337a773dfd147bf908fd02c01b4bf48576d8603a69b13cbe5",
+          "target_sha256": "e3456d1283b9d75337a773dfd147bf908fd02c01b4bf48576d8603a69b13cbe5",
+          "transforms": []
+        },
+        {
+          "source": "webfonts/fa-solid-900.woff2",
+          "target": "public/vendor/fontawesome/webfonts/fa-solid-900.woff2",
+          "upstream_sha256": "aa75998623a391e61c6901794ace832e3ecdd288b56d608f21bea0411acc0b8e",
+          "target_sha256": "aa75998623a391e61c6901794ace832e3ecdd288b56d608f21bea0411acc0b8e",
+          "transforms": []
+        },
+        {
+          "source": "webfonts/fa-brands-400.ttf",
+          "target": "public/vendor/fontawesome/webfonts/fa-brands-400.ttf",
+          "upstream_sha256": "808443ae6c8204395add8543da8a90a60b9376fb0f87ed8e8ea37d109596d805",
+          "target_sha256": "808443ae6c8204395add8543da8a90a60b9376fb0f87ed8e8ea37d109596d805",
+          "transforms": []
+        },
+        {
+          "source": "webfonts/fa-regular-400.ttf",
+          "target": "public/vendor/fontawesome/webfonts/fa-regular-400.ttf",
+          "upstream_sha256": "54cf6086f7bb21f9d072ad494a19b4681fa516dd0a14cee52da01d3651a913a3",
+          "target_sha256": "54cf6086f7bb21f9d072ad494a19b4681fa516dd0a14cee52da01d3651a913a3",
+          "transforms": []
+        },
+        {
+          "source": "webfonts/fa-solid-900.ttf",
+          "target": "public/vendor/fontawesome/webfonts/fa-solid-900.ttf",
+          "upstream_sha256": "d2f0593540b0e33ba6de255a54f272d466e31144806956bea8cfdbf7edffc9bd",
+          "target_sha256": "d2f0593540b0e33ba6de255a54f272d466e31144806956bea8cfdbf7edffc9bd",
+          "transforms": []
+        },
+        {
+          "source": "webfonts/fa-v4compatibility.woff2",
+          "target": "public/vendor/fontawesome/webfonts/fa-v4compatibility.woff2",
+          "upstream_sha256": "0ce9033c69dc714f5f45ef9bf17d55e4c46bcdfad6799a4e92b38e7781bf86bd",
+          "target_sha256": "0ce9033c69dc714f5f45ef9bf17d55e4c46bcdfad6799a4e92b38e7781bf86bd",
+          "transforms": []
+        },
+        {
+          "source": "webfonts/fa-v4compatibility.ttf",
+          "target": "public/vendor/fontawesome/webfonts/fa-v4compatibility.ttf",
+          "upstream_sha256": "30f6abf6baa425825828793d6dfad1fb63765d0e5abaa7af6feafb9bfcece5a0",
+          "target_sha256": "30f6abf6baa425825828793d6dfad1fb63765d0e5abaa7af6feafb9bfcece5a0",
+          "transforms": []
+        }
+      ]
+    },
+    {
+      "package": "davicotico/jquery-menu-editor",
+      "commit": "56a8afbdfa91ccd3bb473bcd017da786bd833bac",
+      "license_metadata": "MIT",
+      "files": [
+        {
+          "source_url": "https://raw.githubusercontent.com/davicotico/jquery-menu-editor/56a8afbdfa91ccd3bb473bcd017da786bd833bac/jquery-menu-editor.min.js",
+          "target": "public/vendor/menu-editor/jquery-menu-editor.min.js",
+          "upstream_sha256": "a982da32ae7e230adef8db9385d57b4fc3e702e6446eff2cb873396eca0e07f9",
+          "target_sha256": "a982da32ae7e230adef8db9385d57b4fc3e702e6446eff2cb873396eca0e07f9"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/davicotico/jquery-menu-editor/56a8afbdfa91ccd3bb473bcd017da786bd833bac/LICENSE",
+          "target": "public/vendor/menu-editor/LICENSE",
+          "upstream_sha256": "69573969390025bd863d7a2c37e48a802928e50fcfdfb380eb24a4feee2723ee",
+          "target_sha256": "69573969390025bd863d7a2c37e48a802928e50fcfdfb380eb24a4feee2723ee"
+        }
+      ]
+    },
+    {
+      "package": "victor-valencia/bootstrap-iconpicker",
+      "commit": "24cf38fe996aa4b3339d434e455eb40ff6aad476",
+      "license_metadata": "MIT",
+      "files": [
+        {
+          "source_url": "https://raw.githubusercontent.com/victor-valencia/bootstrap-iconpicker/24cf38fe996aa4b3339d434e455eb40ff6aad476/dist/js/bootstrap-iconpicker.min.js",
+          "target": "public/vendor/iconpicker/bootstrap-iconpicker.min.js",
+          "target_sha256": "83b8332afd1072036cf22bd28120fe34494293f9989c190398519ed2825e5449"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/victor-valencia/bootstrap-iconpicker/24cf38fe996aa4b3339d434e455eb40ff6aad476/dist/css/bootstrap-iconpicker.min.css",
+          "target": "public/vendor/iconpicker/bootstrap-iconpicker.min.css",
+          "target_sha256": "21eebd26dc702a07e727363bd025c36f54d912bbb7310e012ba4f9eb93ea74dd"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/victor-valencia/bootstrap-iconpicker/24cf38fe996aa4b3339d434e455eb40ff6aad476/LICENSE",
+          "target": "public/vendor/iconpicker/LICENSE",
+          "target_sha256": "5ebd2e85e2f780fb5dcd55f17624be10e4fba8561d930d3bdc1e205cdb7685de"
+        }
+      ]
+    }
+  ],
+  "standalone_legacy_assets": [
+    {
+      "target": "public/dist/js/popper.min.js",
+      "target_sha256": "b4d00640b93ccce21719f7146a3aa2393456c28f5439d12454d839412e0c69f3",
+      "package": "popper.js",
+      "major_version": "1",
+      "exact_patch_version": "unverified",
+      "license_metadata": "MIT",
+      "embedded_copyright": "Copyright (C) Federico Zivolo 2017",
+      "license_path": "docs/licenses/popper-js/LICENSE.md",
+      "license_sha256": "2961310ed05cd9373a08b8191c071425a7fede0ca5d807ca38fa5f5f61c5b834",
+      "license_source_url": "https://raw.githubusercontent.com/floating-ui/floating-ui/v1.16.1/LICENSE.md",
+      "note": "License source tag does not identify the packaged patch version; original asset header is retained."
+    }
+  ]
+}

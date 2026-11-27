@@ -1,0 +1,15 @@
+Rise Open Core
+Copyright 2026 Rise Open Core contributors
+
+This project includes source code distributed under Apache License 2.0 (see LICENSE).
+
+Third-party code and assets retain their respective licenses, notices and attribution.
+The vFair Dice-derived local adaptation preserves its Apache-2.0 attribution in
+docs/licenses/vfair-dice/README.md and docs/licenses/vfair-dice/LICENSE.
+Vendored open-source UI libraries and font/icon assets retain their original
+licenses under public/vendor; refer to docs/THIRD_PARTY_NOTICES.md.
+
+The Apache License does not grant trademark rights to the Rise name, logos,
+or service brands except as required for reasonable identification and attribution.
+Separate private Nova Gateway, ChessBet hosted engines and Rise Full code are
+not part of this source release.

@@ -1,0 +1,13 @@
+<?php
+namespace App\Http\Controllers\Cms\Admin;
+use App\Http\Controllers\Controller;
+use App\Models\{CmsUser,CmsPromotionCode,InternalGameRound};
+use App\Services\Wallet\AssetWalletService;
+use App\Services\InternalGames\{RouletteService,InternalGamePlayService,BlackjackService,SkyRushService};
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+class LocalFinanceController extends Controller {
+ public function provision(Request $r,AssetWalletService $assets){$d=$r->validate(['customer_id'=>'required|integer','currency'=>'required|in:TRY,USD,EUR']);$u=CmsUser::whereKey($d['customer_id'])->where('role','customer')->firstOrFail();$w=DB::transaction(fn()=>$assets->ensurePrimaryBalanceWallet($u,$d['currency'],true));return $r->expectsJson()?response()->json(['status'=>200,'walletId'=>$w->id]):redirect()->route('cms.admin.transactions.manualOverride.create',['customer_id'=>$u->id]);}
+ public function createPromo(Request $r){$d=$r->validate(['promo_code'=>'required|alpha_dash|max:120|unique:cms_promotion_codes,promo_code','currency'=>'required|in:TRY,USD,EUR','promo_amount'=>'required|decimal:0,2|gt:0|max:1000000','promo_count'=>'required|integer|min:1|max:100000','status'=>'required|in:active,passive','start_date'=>'nullable|date','end_date'=>'nullable|date|after_or_equal:start_date']);$d['promo_left']=$d['promo_count'];$promo=CmsPromotionCode::create($d);return $r->expectsJson()?response()->json(['status'=>200,'id'=>$promo->id]):back()->with('manual_override_status','Promo code created.');}
+ public function refund(Request $r,string $roundId,RouletteService $roulette,InternalGamePlayService $dice,BlackjackService $blackjack,SkyRushService $crash){$d=$r->validate(['requestKey'=>'required|string|min:8|max:100']);$round=InternalGameRound::where('round_id',$roundId)->firstOrFail();abort_unless(in_array($round->game_code,['dice','roulette-european','roulette-european-low-limit','roulette-european-high-limit','blackjack-classic','blackjack-salon','sky-rush','orbit-x','mini-slot-classic','big-win']),409);$value=$crash->supportsGameCode($round->game_code)?$crash->refund($roundId,$d['requestKey'],auth('cms')->user()):($blackjack->supportsGameCode($round->game_code)?$blackjack->refund($roundId,$d['requestKey'],auth('cms')->user()):(in_array($round->game_code,['dice','mini-slot-classic','big-win'])?$dice->refund($roundId,$d['requestKey'],auth('cms')->user()):$roulette->refund($roundId,$d['requestKey'],auth('cms')->user())));return $r->expectsJson()?response()->json(['status'=>200,'data'=>$value]):redirect()->route('cms.admin.transactions.manualOverride.create',['customer_id'=>$round->cms_user_id])->with('manual_override_status',$value['result']);}
+}

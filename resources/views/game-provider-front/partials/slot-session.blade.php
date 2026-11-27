@@ -1,0 +1,3 @@
+<style>.riseSlotHistory{box-sizing:border-box;max-width:1180px;width:calc(100% - 24px);margin:16px auto;padding:16px;background:#17151b;color:#eee;border:1px solid #695329;border-radius:16px;font:14px system-ui}.riseSlotHistory ol{max-height:220px;overflow:auto;padding-left:22px}.riseSlotHistory li{padding:8px;overflow-wrap:anywhere}.riseSlotHistory a{color:#efc76b}</style>
+<section class="riseSlotHistory"><a href="{{ route('cms.games.detail',['slug'=>$session->game->slug]) }}">← {{ $payload['gameName'] }}</a><h2>Round history · {{ $payload['isDemo'] ? 'Demo / virtual credits' : 'Real wallet' }}</h2><ol data-slot-history></ol></section>
+<script>window.__RISE_SLOT_SESSION_BOOT__=@json($payload);</script><script src="/internal-games/slot-session.js"></script>

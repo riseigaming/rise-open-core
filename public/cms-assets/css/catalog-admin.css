@@ -1,0 +1,7 @@
+/* Match the existing light admin shell using approved local Tabler, not held vendor bundles. */
+.navbar.navbar-vertical.navbar-dark{--tblr-navbar-color:#3f4c60;--tblr-navbar-hover-color:#182435;--tblr-navbar-active-color:#182435;--tblr-navbar-brand-color:#182435}
+.navbar.navbar-vertical .navbar-nav .nav-link{color:#3f4c60}.navbar.navbar-vertical .navbar-nav .nav-link:hover,.navbar.navbar-vertical .navbar-nav .nav-link.activeSideItem{color:#182435;background:#edf1f7}.navbar.navbar-vertical .nav-link-icon .dashboard-icon{width:20px;height:20px}.catalog-nav-group{padding:14px 12px 5px;color:#65738a;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+@media(min-width:1024px){body.admin-sidebar-collapsed .catalog-nav-group{display:none}}
+.catalog-nav-group span{display:block}.admin-mobile-menu-trigger:focus-visible{outline:3px solid #1473e6;outline-offset:3px}
+
+@media(max-width:1023px){#admin-navbar-menu .admin-mobile-nav-close{display:inline-flex}}

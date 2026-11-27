@@ -1,0 +1,1 @@
+@if($catalogGames->isNotEmpty())<section class="catalogHome"><div class="d-flex flex-wrap justify-content-between gap-3 mb-3"><h2>{{ __('catalog.featured') }}</h2><a href="{{ route('cms.games.index') }}">{{ __('catalog.all_games') }}</a></div>@include('cms.global.games.cards',['games'=>$catalogGames])</section>@endif
